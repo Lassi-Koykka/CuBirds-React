@@ -1,0 +1,60 @@
+{
+    "birds": [
+        {
+            "name": "reed",
+            "count": 20,
+            "smallFlock": 6,
+            "largeFlock": 9,
+            "imageFile": "reed.png"            
+        },
+        {
+            "name": "flamingo",
+            "count": 7,
+            "smallFlock": 2,
+            "largeFlock": 3,
+            "imageFile": "flamingo.png"          
+        },
+        {
+            "name": "toucan",
+            "count": 10,
+            "smallFlock": 3,
+            "largeFlock": 4,
+            "imageFile": "toucan.png"  
+        },
+        {
+            "name": "magpie",
+            "count": 17,
+            "smallFlock": 5,
+            "largeFlock": 7,
+            "imageFile": "magpie.png"
+        },
+        {
+            "name": "owl",
+            "count": 10,
+            "smallFlock": 3,
+            "largeFlock": 4,
+            "imageFile": "owl.png"
+        },
+        {
+            "name": "parrot",
+            "count": 13,
+            "smallFlock": 4,
+            "largeFlock": 6,
+            "imageFile": "parrot.png"            
+        },
+        {
+            "name": "robin",
+            "count": 20,
+            "smallFlock": 6,
+            "largeFlock": 9,
+            "imageFile": "robin.png"
+        },
+        {
+            "name": "duck",
+            "count": 13,
+            "smallFlock": 4,
+            "largeFlock": 6,
+            "imageFile": "duck.png"            
+        }
+    ]
+}

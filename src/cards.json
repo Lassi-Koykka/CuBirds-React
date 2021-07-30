@@ -1,0 +1,772 @@
+[
+  {
+    "uid": "0224e444-9aea-453b-ad9a-4e6c7d8d887c",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "55aceea4-aee8-446c-9ac6-02aab38f59a4",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "813bcd12-d07f-4f3c-8ce0-b8bd4b30589d",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "e86a5f0e-40fa-4c1c-9c80-9057fc2ae2c2",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "345d52e4-0606-4f03-9a24-f98025591d80",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "557f189d-8a45-491e-af3d-3aac33e0c43b",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "7fd4dd79-a205-459f-8661-84236981aa09",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "fb946335-da55-46ec-9c7b-46a603d9c7c0",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "c31f9634-c55b-4966-8426-7ff8d8c89453",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "a7d8d8b0-981f-4758-b8ee-feae16f5719d",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "3a16f840-fbb5-46e7-9cc8-65f665a00105",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "29e751e6-27e7-40a7-82ce-b26f986b51eb",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "46ca8948-1687-40ef-a074-42a80272a7a3",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "0a854b71-fefd-4380-bf0d-3c8f182dc52b",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "ec75d1e1-b60c-4ef9-a26f-6ed64d3861c7",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "04e74be8-a0f5-49a4-ac3d-39da42dbbfbc",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "b2775a0d-ac90-42b1-93cc-f2e4c75d49ce",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "8f0d34ba-7277-4600-b4ef-30fccd09cf32",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "4366b0f5-d0b5-40ec-8c23-317f8c805958",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "9fcf7ff5-f9ac-400c-8cac-4757b586fea1",
+    "name": "reed",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "reed.png"
+  },
+  {
+    "uid": "41d37dca-10f1-4156-8b46-f63788ce648b",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "5da7c599-2a51-4a10-bb31-9d7cf2c7b410",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "4c55efc6-6a91-4830-b542-b2accdd18541",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "d6e6d911-95f0-4ec6-8911-a2113d3a6396",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "f4693de6-fded-4db6-81f8-461d1dd08cfa",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "379d581f-2dd1-45b2-ac2b-ce0bfb56d8c0",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "5bc6879a-89f4-4074-9331-a519d77e5528",
+    "name": "flamingo",
+    "smallFlock": 2,
+    "largeFlock": 3,
+    "imageFile": "flamingo.png"
+  },
+  {
+    "uid": "e7f7e64c-537b-4eca-a5e7-f5ab33a18d5e",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "20fedd8c-d94e-47fe-b778-ae3b123d1498",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "0beb8ef9-51be-42f2-9097-94a908785e7c",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "584d01e6-e1ba-460e-ab81-85a3877238ef",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "584ec770-8270-470d-b404-709c5ff20861",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "208f812f-f5bc-4c85-ac22-24dbfb7a4829",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "a26700cf-2cd4-485b-8dc7-5d5ade3a0da2",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "f9a183c1-0f4a-492e-bb98-d726eee9ce14",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "7e55fb09-0fc8-4075-9af2-2b1712b70c80",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "d3d5b83d-cb51-4962-ad74-a270636b6dce",
+    "name": "toucan",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "toucan.png"
+  },
+  {
+    "uid": "14276ec7-46f9-4c98-b25d-750fa2dd04ad",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "90a0d093-332f-4145-a789-e017481b42f5",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "a9971da7-43a8-4d33-bcb7-8132d993bcea",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "f26138e1-432f-4941-abf1-8f1d47ec7098",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "cc88e2b1-a43e-4abe-8ec2-aa0149dcb69f",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "36844c48-f1f2-4b18-9cf4-2d680217053f",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "9c8463bc-4c30-4228-91da-24af9c420a67",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "a5c35f3c-81fa-499c-a80b-889ee23a0cc2",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "3dac6f32-3e77-4a3f-98f1-1f76c34231cc",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "7a6b9e72-2ef4-4f5b-b9b4-c7b88100b258",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "b77089fd-318f-4893-96bc-b19fa5179fc9",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "9dabae80-c4f5-4028-b2c9-1e7b07843626",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "ed694c57-ad19-4e44-96cb-11a13dd17bd4",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "bab1c3f4-9ddf-4ef2-b046-37089339f92a",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "0358ae92-e15d-49c6-9c7d-a79b98175b9d",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "907e00f4-2896-43a2-b6b2-6b3320e65c3e",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "0a69552a-a465-4a0a-bea8-cbf440dade92",
+    "name": "magpie",
+    "smallFlock": 5,
+    "largeFlock": 7,
+    "imageFile": "magpie.png"
+  },
+  {
+    "uid": "6a59e5e5-2786-4fb7-8742-a16206e49af5",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "3744ba53-7650-45bd-978d-1f630f0f2a4d",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "41df033f-98c2-4f83-b956-8c36044fd171",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "d03c60a4-c60e-49f8-9857-71a12a309cdd",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "f5438478-9b55-4a85-8a03-84a7ae5c59df",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "86cf2953-f61e-4da4-ab8b-db286f9c626f",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "afd59539-4815-4c5d-8dc5-2e0652332c46",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "d9788e46-6d26-44bb-a22c-03bbfdf7f5cb",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "51ec438e-9cfe-4abf-b05b-95d40166f4bd",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "5a5c5e11-bb3a-4453-86c6-b0f01f900b1b",
+    "name": "owl",
+    "smallFlock": 3,
+    "largeFlock": 4,
+    "imageFile": "owl.png"
+  },
+  {
+    "uid": "d90249b2-381a-4ac1-84b5-b16a41981d4b",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "089e8462-69ff-43bc-8854-6767fc524d40",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "b18dde28-c2bc-42da-83ae-9b10a8bfc7df",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "e478eb37-7433-4467-8572-4c9ec94fe5b8",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "7b8360fb-09d1-4914-ba79-6ba9fc041af2",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "f3bc8f0e-bbe3-46e1-9a73-702bd663f1c7",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "308f2834-59bb-4d81-94ff-ec37da987179",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "f1223381-52e2-4028-99f0-86a7821655b8",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "51ed819c-6811-49f9-a83b-c0a94ce94da8",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "bd0f5fa5-c420-4263-b869-ddd954be2ffb",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "39320413-4deb-41d5-bbd9-c587731395d7",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "cf21b0c3-72d9-4aba-9d18-a130d25be8e8",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "60e9fdc8-d4d1-4e6e-b3a5-d8646b07469b",
+    "name": "parrot",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "parrot.png"
+  },
+  {
+    "uid": "8e52af41-04c7-4a18-aa8a-060bd19ee52e",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "1472a148-4166-4a03-a6b6-9ff3ff5402ba",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "8b13b5d5-f41c-428c-b73c-b8005b079235",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "f2116f29-85ec-4b02-8dd6-d20b7dea5815",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "2f1cf532-ea72-4772-9d72-4770734707d7",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "9a8d0336-2cef-45eb-8e1d-d4d56c78502e",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "291c8654-f402-4179-a9f7-24c22e80d23f",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "bab95919-7602-42c8-9d93-66b43a75c1aa",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "3b6449e0-01d2-4d7a-ad16-3d1a116ce21c",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "9e0e1fbd-bf84-40b4-9fd1-e4dff4985d34",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "74507753-10f9-4bdc-b87a-e1805d80f98e",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "1373364e-a62c-43e7-a910-496cb7636a49",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "59b1e83e-db32-4485-8265-711e3bbe0ff8",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "cbf7adc8-7fc5-4ecc-8b99-c56ac586f7e2",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "5eb1e44d-2e9a-4f4b-a9c5-23840eea580a",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "6629f393-1b3d-4724-9d1d-71ffe9c10973",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "b9cdf505-ff63-464d-9015-a3ce2c564232",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "27117daf-11ab-4623-8b88-3e487b0a708e",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "50162c43-d0c0-4417-a26f-7e8abf1cde22",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "cadc99b6-1e5f-4974-8fb1-e5cd1977db6a",
+    "name": "robin",
+    "smallFlock": 6,
+    "largeFlock": 9,
+    "imageFile": "robin.png"
+  },
+  {
+    "uid": "aaa9cb0d-aa0b-474c-8e31-81996b587aea",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "abbfa08d-ad92-4f79-a0f5-2cf7eef6af0e",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "78616f33-222b-4961-b868-2b8957c35148",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "771d90d5-43be-4c1d-af81-a438e4365cfe",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "3ccaf798-261f-4fb7-b21f-753befa348a3",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "131d6973-9412-433b-8edd-15008d495239",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "09e1d8e4-8639-4962-9b47-c8846f19ce24",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "618940ae-66cc-44d6-893f-5c7f84a701db",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "fd58ff86-8fe1-48c9-bd97-f89017699115",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "b91d52f3-642d-4c9b-a4f0-cf86156fc45c",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "f2ca41fe-7ea8-486f-9af7-b6e1ebd0571e",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "bf5fac5a-6258-4ae4-84b5-20abda82e5f7",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  },
+  {
+    "uid": "4e72fcda-de9d-416f-aaaf-fb659abd3c5c",
+    "name": "duck",
+    "smallFlock": 4,
+    "largeFlock": 6,
+    "imageFile": "duck.png"
+  }
+]

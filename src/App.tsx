@@ -1,16 +1,21 @@
-import React from 'react';
 import './App.css';
-import DropZone from "./components/DropZone"
-import {IGameCard} from "./components/GameCard"
+import React, { useEffect, useState, createContext } from 'react';
+import { Button } from '@material-ui/core';
+import { GameStateProvider } from './GameStateContext';
 
+import GameBoard from './components/GameBoard';
+import { setupGame } from "./util"
+import cards from "./cards.json";
+
+const startingGameState = setupGame(cards);
 
 function App() {
-  const startingCard: IGameCard = {title: "Example GameCard", description: "This is an example playcard for my game"}
 
   return (
     <div className="App">
-      <DropZone cardData={startingCard} />
-      <DropZone />
+      <GameStateProvider gameState={startingGameState}>
+        <GameBoard />
+      </GameStateProvider>
     </div>
   );
 }

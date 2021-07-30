@@ -5,13 +5,14 @@ import GameCard, { IGameCard } from "./GameCard";
 
 interface DropZoneProps {
     cardData?: IGameCard;
+    movable?: boolean
 }
 
 
 const useStyles = makeStyles({
     DropZone: {
-        height: "360px",
-        width: "260px",
+        height: 220,
+        width: 160,
         borderRadius: "15px",
         border: "white 1px dashed",
         display: "grid",
@@ -54,7 +55,7 @@ const DropZone = (props: DropZoneProps) => {
     }
 
     const handleDragOver = (e: React.DragEvent) => {
-        if (!dragging) {
+        if (!dragging && card === undefined) {
             e.preventDefault()
             setDropHover(true)
         }
@@ -63,11 +64,11 @@ const DropZone = (props: DropZoneProps) => {
     return (
         <div className={classes.DropZone} style={{background: (dropHover ? "#4CAF50" : "transparent")}} 
         onDragStart={() => setDragging(true)} 
-        onDragOver={handleDragOver} 
         onDragLeave={() => setDropHover(false)}
+        onDragOver={handleDragOver} 
         onDragEnd={handleDragEnd}
         onDrop={handleOnDrop} >
-            {card ? <GameCard GameCardData={card} /> : <h1>DropZone</h1>}
+            {card ? <GameCard GameCardData={card} /> : <h3>DropZone</h3>}
         </div>
     )
 }

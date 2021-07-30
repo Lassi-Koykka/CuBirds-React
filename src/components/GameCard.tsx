@@ -2,25 +2,27 @@ import React from "react";
 
 interface GameCardProps {
     GameCardData: IGameCard
+    draggable?: boolean
 }
 
 export interface IGameCard {
     title: string,
     description?: string,
-    frontImageUrl?: string,
-    backImageUrl?: string 
+    frontImage?: string,
+    backImage?: string,
 }
 
 const GameCard = (props: GameCardProps) => {
 
-    const gameCardStyles = {
-        height: "350px",
-        width: "250px",
-        borderRadius: "15px",
-        background: "white",
-        color: "black",
+    
+    const gameCardStyles: React.CSSProperties = {
+        height: 210,
+        width: 150,
+        borderRadius: 15,
         display: "grid",
-        placeItems: "center",      
+        background: 'url('+ props.GameCardData.frontImage +')',
+        backgroundSize: "contain",
+        placeItems: "center",
     }
 
     const handleDragStart = (e: React.DragEvent) => {
@@ -29,10 +31,9 @@ const GameCard = (props: GameCardProps) => {
         console.log(e.dataTransfer)
     }
 
+    
     return(
-        <div style={gameCardStyles} draggable onDragStart={handleDragStart}>
-            {<h1>{props.GameCardData.title}</h1>}
-            {props.GameCardData.description ? <p style={{maxWidth: "80%"}}>{props.GameCardData.description}</p> : <></>}
+        <div style={gameCardStyles} draggable={props.draggable} onDragStart={handleDragStart}>
         </div>
     )
 }
