@@ -6,6 +6,7 @@ import { IBirdCard } from "../types";
 
 
 interface DropZoneProps {
+    cardData?: IBirdCard,
     side: "left"  | "right",
     row: number,
 }
@@ -31,6 +32,8 @@ const DropZone = (props: DropZoneProps) => {
 
     const { gameState, setGameState } = useContext(GameStateContext);
 
+    const [card, setCard] = useState(props.cardData);
+    const [dragging, setDragging] = useState(false);
     const [dropHover, setDropHover] = useState(false);
     const classes = useStyles();
 
@@ -47,16 +50,31 @@ const DropZone = (props: DropZoneProps) => {
         }
     }
 
+    const handleDragEnd = (e: React.DragEvent) => {
+        e.preventDefault();
+        setDragging(false);
+        setDropHover(false)
+
+        if (e.dataTransfer.dropEffect === "move") {
+            setCard(undefined);
+        }
+    }
+
     const handleDragOver = (e: React.DragEvent) => {
-        e.preventDefault()
-        setDropHover(true)
+        if (!dragging && card === undefined) {
+            e.preventDefault()
+            setDropHover(true)
+        }
     }
 
     return (
         <div className={classes.DropZone} style={{background: (dropHover ? "#4CAF50" : "transparent")}} 
+        onDragStart={() => setDragging(true)} 
         onDragLeave={() => setDropHover(false)}
         onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
         onDrop={handleOnDrop} >
+            <h3>DropZone</h3>
         </div>
     )
 }
