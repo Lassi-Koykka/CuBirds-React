@@ -1,13 +1,12 @@
 import './App.css';
-import React, { useEffect, useState, createContext } from 'react';
-import { Button } from '@material-ui/core';
 import { GameStateProvider } from './GameStateContext';
 
 import GameBoard from './components/GameBoard';
-import { setupGame } from "./util"
+import { SetupGame } from "./util"
 import cards from "./cards.json";
+import PlayerHand from './components/PlayerHand';
 
-const startingGameState = setupGame(cards);
+const startingGameState = SetupGame(cards);
 
 function App() {
 
@@ -15,6 +14,7 @@ function App() {
     <div className="App">
       <GameStateProvider gameState={startingGameState}>
         <GameBoard />
+        <PlayerHand />
       </GameStateProvider>
     </div>
   );

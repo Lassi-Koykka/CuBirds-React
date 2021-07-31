@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {makeStyles} from "@material-ui/core"
-import GameCard, { IGameCard } from "./GameCard";
+import { GameStateContext } from "../GameStateContext";
+import { PlaceCards } from "../util";
+import { IBirdCard } from "../types";
 
 
 interface DropZoneProps {
-    cardData?: IGameCard;
-    movable?: boolean
+    cardData?: IBirdCard,
+    side: "left"  | "right",
+    row: number,
 }
 
 
@@ -27,6 +30,8 @@ const useStyles = makeStyles({
 
 const DropZone = (props: DropZoneProps) => {
 
+    const { gameState, setGameState } = useContext(GameStateContext);
+
     const [card, setCard] = useState(props.cardData);
     const [dragging, setDragging] = useState(false);
     const [dropHover, setDropHover] = useState(false);
@@ -39,8 +44,9 @@ const DropZone = (props: DropZoneProps) => {
         if (e.dataTransfer.dropEffect !== "none") {
             const data = e.dataTransfer.getData("text/json");
             console.log("DATA: \n" + data);
-            setCard(JSON.parse(data));
-            console.log(data);
+            let card: IBirdCard = JSON.parse(data)
+            // console.log(data);
+            setGameState(PlaceCards(gameState, card, props.row, props.side))
         }
     }
 
@@ -65,10 +71,10 @@ const DropZone = (props: DropZoneProps) => {
         <div className={classes.DropZone} style={{background: (dropHover ? "#4CAF50" : "transparent")}} 
         onDragStart={() => setDragging(true)} 
         onDragLeave={() => setDropHover(false)}
-        onDragOver={handleDragOver} 
+        onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
         onDrop={handleOnDrop} >
-            {card ? <GameCard GameCardData={card} /> : <h3>DropZone</h3>}
+            <h3>DropZone</h3>
         </div>
     )
 }

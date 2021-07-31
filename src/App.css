@@ -1,5 +1,9 @@
-.App {
+html {
   background-color: #282c34;
+}
+
+.App {
+
   text-align: center;
   color: white;
   min-height: 100vh;

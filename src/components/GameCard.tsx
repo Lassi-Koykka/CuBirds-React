@@ -1,39 +1,36 @@
+import { makeStyles } from "@material-ui/core";
 import React from "react";
+import { IBirdCard } from "../types";
 
 interface GameCardProps {
-    GameCardData: IGameCard
+    CardData: IBirdCard
     draggable?: boolean
 }
 
-export interface IGameCard {
-    title: string,
-    description?: string,
-    frontImage?: string,
-    backImage?: string,
-}
-
-const GameCard = (props: GameCardProps) => {
-
-    
-    const gameCardStyles: React.CSSProperties = {
+const useStyles = makeStyles({
+    GameCard: {
         height: 210,
         width: 150,
         borderRadius: 15,
         display: "grid",
-        background: 'url('+ props.GameCardData.frontImage +')',
         backgroundSize: "contain",
         placeItems: "center",
     }
+})
+
+const GameCard = (props: GameCardProps) => {
+
+    const classes = useStyles();
 
     const handleDragStart = (e: React.DragEvent) => {
         e.dataTransfer.dropEffect = "move";
-        e.dataTransfer.setData("text/json", JSON.stringify(props.GameCardData))
+        e.dataTransfer.setData("text/json", JSON.stringify(props.CardData))
         console.log(e.dataTransfer)
     }
 
-    
-    return(
-        <div style={gameCardStyles} draggable={props.draggable} onDragStart={handleDragStart}>
+
+    return (
+        <div className={classes.GameCard} style={{backgroundImage: 'url(' + props.CardData.imageFile + ')'}} draggable={props.draggable} onDragStart={handleDragStart}>
         </div>
     )
 }

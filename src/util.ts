@@ -1,10 +1,9 @@
-import { IGameCard } from "./components/GameCard";
 import { IBirdCard, IGameBoard, IGameState } from "./types";
 import { birds } from "./birds.json";
 import { v4 as uuidv4 } from "uuid"
 
 
-export const shuffle = (allCards: IBirdCard[]) => {
+export const Shuffle = (allCards: IBirdCard[]) => {
     let currentIndex = allCards.length, randomIndex;
 
     while (currentIndex !== 0) {
@@ -15,12 +14,8 @@ export const shuffle = (allCards: IBirdCard[]) => {
     return allCards;
 }
 
-export const toGameCard = (card: IBirdCard): IGameCard => {
-    return { title: card.name, description: card.smallFlock + "/" + card.largeFlock, frontImage: card.imageFile }
-}
-
 //Creating card list from species
-export const makeCards = () => {
+export const MakeCards = () => {
 
     let newCards: IBirdCard[] = [];
 
@@ -33,9 +28,9 @@ export const makeCards = () => {
     console.log(newCards);
 }
 
-export const setupGame = (startDeck: IBirdCard[]): IGameState => {
-    const deck = shuffle(startDeck);
-    const gameBoard: IGameBoard = [[],[],[],[]]
+export const SetupGame = (startDeck: IBirdCard[]): IGameState => {
+    const deck = Shuffle(startDeck);
+    const gameBoard: IGameBoard = [[], [], [], []]
     const discardPile: IBirdCard[] = [];
     const playerHand: IBirdCard[] = [];
     const playerFlocks: IBirdCard[] = [];
@@ -46,11 +41,11 @@ export const setupGame = (startDeck: IBirdCard[]): IGameState => {
         while (row.length < 3) {
             const card = deck.pop()!;
             if (usedSpecies.includes(card.name)) {
-                discardPile.push(card) 
+                discardPile.push(card)
             } else {
                 row.push(card);
                 usedSpecies.push(card.name)
-            }    
+            }
         }
     })
 
@@ -59,8 +54,30 @@ export const setupGame = (startDeck: IBirdCard[]): IGameState => {
         playerHand.push(deck.pop()!)
     }
 
+    playerHand.sort((a, b) => a.name > b.name ? 1 : -1)
+
     playerFlocks.push(deck.pop()!)
-    
-    
+
+
     return { deck, gameBoard, discardPile, playerHand, playerFlocks }
+}
+
+export const PlaceCards = (gameState: IGameState, usedCard: IBirdCard, row: number, side: "left" | "right"): IGameState => {
+    let gameBoard = gameState.gameBoard;
+    let playerHand = gameState.playerHand
+    if (playerHand.some(card => card.uid === usedCard.uid)) {
+        const usedCards = playerHand.filter(card => card.name === usedCard.name)
+        // Add cards to the appropriate side of the row
+        side === "left" ? gameBoard[row].unshift(...usedCards) : gameBoard[row].push(...usedCards);
+
+        // Remove card from players hand
+        playerHand = playerHand.filter(card => !usedCards.includes(card))
+        if (playerHand.length < 1) {
+            // New cards to all players
+        }
+        return {...gameState, gameBoard, playerHand}
+
+    } else {
+        throw "Card placement error: Used cards not found in player hand."
+    }
 }
