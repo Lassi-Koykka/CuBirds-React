@@ -20,9 +20,13 @@ const GameBoard = () => {
                     let currRow = rowIndex;
                     rowIndex += 1;
                     return (
-                        <Grid item container direction="row" spacing={1} justify="center" alignItems="center" wrap="nowrap">
+                        <Grid key={"row" + currRow} item container direction="row" spacing={1} justify="center" alignItems="center" wrap="nowrap">
                             <Grid item><DropZone row={currRow} side="left" /></Grid>
-                                {row.map(card => <Grid item><GameCard CardData={card}/></Grid>)}
+                            {row.map(card =>
+                                <Grid key={card.uid} item>
+                                    <GameCard CardData={card} />
+                                </Grid>
+                            )}
                             <Grid item><DropZone row={currRow} side="right" /></Grid>
                         </Grid>
                     )

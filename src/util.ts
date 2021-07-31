@@ -63,19 +63,62 @@ export const SetupGame = (startDeck: IBirdCard[]): IGameState => {
 }
 
 export const PlaceCards = (gameState: IGameState, usedCard: IBirdCard, row: number, side: "left" | "right"): IGameState => {
-    let gameBoard = gameState.gameBoard;
-    let playerHand = gameState.playerHand
+    let {deck, discardPile, playerHand, playerFlocks, gameBoard} = gameState
+    
     if (playerHand.some(card => card.uid === usedCard.uid)) {
         const usedCards = playerHand.filter(card => card.name === usedCard.name)
-        // Add cards to the appropriate side of the row
-        side === "left" ? gameBoard[row].unshift(...usedCards) : gameBoard[row].push(...usedCards);
+        
+        // Add cards to the appropriate side of the row and get the receive the birds in between
+        let cardsReceived: IBirdCard[] = []
+        if (side === "left") { 
+            cardsReceived = gameBoard[row].splice(0, gameBoard[row].findIndex(card => card.name === usedCard.name))
+            gameBoard[row].unshift(...usedCards)
+        } else {
+            const index = gameBoard[row].slice().reverse().findIndex((card: IBirdCard) => card.name === usedCard.name);
+            
+            if(index !== -1) {
+                const count = gameBoard[row].length - 1
+                const finalIndex = index >= 0 ? count - index : index;
+                const takeFromEnd = -(gameBoard[row].length - finalIndex) + 1
+                if(takeFromEnd < 0) cardsReceived = gameBoard[row].splice(takeFromEnd)
+            }
+                
+            gameBoard[row].push(...usedCards);
+        }
 
         // Remove card from players hand
         playerHand = playerHand.filter(card => !usedCards.includes(card))
-        if (playerHand.length < 1) {
-            // New cards to all players
+        
+        // Draw new cards to row if all the same species
+        while(gameBoard[row].every(card => card.name === gameBoard[row][0].name)) {
+            if(deck.length < 1) {
+                deck = Shuffle(discardPile)
+                discardPile = []
+            }
+            side === "left" ? gameBoard[row].push(deck.pop()!) : gameBoard[row].unshift(deck.pop()!)
+            console.log("Adding card to " + (side === "left" ? "right" : "left"))
         }
-        return {...gameState, gameBoard, playerHand}
+
+        if (playerHand.length < 1) {
+            // New cards to all players if the player chooses
+        }
+
+        if(cardsReceived.length > 0) {
+            playerHand.push(...cardsReceived)
+        } else {
+            if(deck.length > 2) {
+                playerHand.push(deck.pop()!)
+                playerHand.push(deck.pop()!)
+            } else {
+                console.log("Reshuffling discard pile into a new deck")
+                deck = Shuffle(discardPile)
+                discardPile = []
+            }
+        }
+
+        playerHand.sort((a, b) => a.name > b.name ? 1 : -1)
+
+        return { deck, discardPile, gameBoard, playerHand, playerFlocks }
 
     } else {
         throw "Card placement error: Used cards not found in player hand."

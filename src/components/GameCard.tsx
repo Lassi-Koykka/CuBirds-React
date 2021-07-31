@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Fade } from "@material-ui/core";
 import React from "react";
 import { IBirdCard } from "../types";
 
@@ -30,8 +30,10 @@ const GameCard = (props: GameCardProps) => {
 
 
     return (
-        <div className={classes.GameCard} style={{backgroundImage: 'url(' + props.CardData.imageFile + ')'}} draggable={props.draggable} onDragStart={handleDragStart}>
-        </div>
+        <Fade in={true} mountOnEnter unmountOnExit>
+            <div className={classes.GameCard} style={{backgroundImage: 'url(' + props.CardData.imageFile + ')'}} draggable={props.draggable} onDragStart={handleDragStart}>
+            </div>
+        </Fade>
     )
 }
 

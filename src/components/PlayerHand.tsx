@@ -27,7 +27,7 @@ const PlayerHand = () => {
 
     const classes = useStyles();
 
-    const { gameState, setGameState } = useContext(GameStateContext)
+    const { gameState } = useContext(GameStateContext)
 
     let zIndex = 1000;
 
@@ -39,7 +39,7 @@ const PlayerHand = () => {
                 let z = zIndex;
                 zIndex -= 1;
                 return (
-                    <Grid item className={classes.RowCard} style={{zIndex: z, margin: `0 -${gameState.playerHand.length}px`,}}>
+                    <Grid item key={card.uid} className={classes.RowCard} style={{zIndex: z, margin: `0 -${gameState.playerHand.length* 1.5}px`,}}>
                         <GameCard CardData={card} draggable/>
                     </Grid>
                 )
