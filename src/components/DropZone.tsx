@@ -42,8 +42,7 @@ const DropZone = (props: DropZoneProps) => {
             const data = e.dataTransfer.getData("text/json");
             console.log("DATA: \n" + data);
             let card: ICard = JSON.parse(data)
-            // console.log(data);
-            setGameState(PlaceCards(gameState, card, props.row, props.side))
+            PlaceCards(gameState, setGameState, card, props.row, props.side)
         }
     }
 

@@ -32,7 +32,6 @@ export const MakeCards = () => {
 export const SetupGame = (startDeck: ICard[]): IGameState => {
     const deck = Shuffle(startDeck);
     const gameBoard: IGameBoard = [[], [], [], []]
-    const cardsMoved: ICard[] = [];
     const discardPile: ICard[] = [];
     const playerHand: ICard[] = [];
     const playerFlocks: ICard[] = [];
@@ -61,37 +60,94 @@ export const SetupGame = (startDeck: ICard[]): IGameState => {
     playerFlocks.push(deck.pop()!)
 
 
-    return { deck, gameBoard, cardsMoved, discardPile, playerHand, playerFlocks }
+    return { deck, gameBoard, cardsMoving: [], discardPile, playerHand, playerFlocks }
 }
 
-export const PlaceCards = (gameState: IGameState, usedCard: ICard, row: number, side: "left" | "right"): IGameState => {
+export const PlaceCards = async (gameState: IGameState, setGameState: (gameState: IGameState) => void, usedCard: ICard, row: number, side: "left" | "right") => {
     let {deck, discardPile, playerHand, playerFlocks, gameBoard} = gameState
-    let cardsMoved: ICard[] = [];
-
 
     if (playerHand.some(card => card.uid === usedCard.uid)) {
-        const usedCards = playerHand.filter(card => card.name === usedCard.name)
         
-        // Add cards to the appropriate side of the row and get the receive the birds in between
+        //  PLACE CARDS FROM HAND TO THE TABLE
+        
         let receivedCards: ICard[] = []
+        const usedCards = playerHand.filter(card => card.name === usedCard.name)
+        const currRow = gameBoard[row]
+        const rowAfter = [...gameBoard[row]];
+        
+        // Add cards to the appropriate side of the row
+
         if (side === "left") { 
-            receivedCards = gameBoard[row].splice(0, gameBoard[row].findIndex(card => card.name === usedCard.name))
-            gameBoard[row].unshift(...usedCards)
+            receivedCards = rowAfter.splice(0, rowAfter.findIndex(card => card.name === usedCard.name))
+            currRow.unshift(...usedCards)
+            rowAfter.unshift(...usedCards)
         } else {
-            const index = gameBoard[row].slice().reverse().findIndex((card: ICard) => card.name === usedCard.name);
+            const index = rowAfter.slice().reverse().findIndex((card: ICard) => card.name === usedCard.name);
             
             if(index !== -1) {
-                const count = gameBoard[row].length - 1
+                const count = rowAfter.length - 1
                 const finalIndex = index >= 0 ? count - index : index;
-                const takeFromEnd = -(gameBoard[row].length - finalIndex) + 1
-                if(takeFromEnd < 0) receivedCards = gameBoard[row].splice(takeFromEnd)
+                const takeFromEnd = -(rowAfter.length - finalIndex) + 1
+                if(takeFromEnd < 0) receivedCards = rowAfter.splice(takeFromEnd);
             }
                 
-            gameBoard[row].push(...usedCards);
+            currRow.push(...usedCards);
+            rowAfter.push(...usedCards)
         }
 
         // Remove card from players hand
         playerHand = playerHand.filter(card => !usedCards.includes(card))
+
+        setGameState({ deck, discardPile, cardsMoving: receivedCards, gameBoard, playerHand, playerFlocks })
+
+        await delay(1000);
+
+
+        // MOVE RECEIVED CARDS FROM TABLE TO PLAYERS HAND
+
+        gameBoard[row] = rowAfter;
+        
+        if(receivedCards.length > 0) {
+            playerHand.push(...receivedCards)
+        } else {
+
+            if (playerHand.length < 1) {
+                // New cards to all players if the player so chooses
+                let answer = window.confirm("Vahvista aloittaaksesi uuden kierroksen. Muussa tapauksessa nostat 2 korttia pakasta.");
+
+                if (!answer) {   
+                    let card1, card2;
+                    
+                    if(deck.length > 2) {
+                        card1 = deck.pop()!
+                        card2 = deck.pop()!
+                        playerHand.push(card1)
+                        playerHand.push(card2)
+                    } else {
+                        console.log("Reshuffling discard pile into a new deck")
+                        deck = Shuffle(discardPile)
+                        discardPile = []
+                        
+                        card1 = deck.pop()!
+                        card2 = deck.pop()!
+                        playerHand.push(card1)
+                        playerHand.push(card2)
+                    }
+                } else {
+                    console.log("NEW ROUND")
+                }
+            }
+                
+        }
+
+        playerHand.sort((a, b) => a.name > b.name ? 1 : -1)
+
+        setGameState({ deck, discardPile, cardsMoving: [], gameBoard, playerHand, playerFlocks });
+
+        await delay(1000)
+
+
+        // DRAW NEW CARDS TO TABLE
 
         // Draw new cards to row if all the same species
         while(gameBoard[row].every(card => card.name === gameBoard[row][0].name)) {
@@ -100,47 +156,18 @@ export const PlaceCards = (gameState: IGameState, usedCard: ICard, row: number, 
                 discardPile = []
             }
             let newCard = deck.pop()!
-            cardsMoved.push(newCard)
             side === "left" ? gameBoard[row].push(newCard) : gameBoard[row].unshift(newCard)
             console.log("Adding card to " + (side === "left" ? "right" : "left"))
+            
+            setGameState({ deck, discardPile, cardsMoving: [], gameBoard, playerHand, playerFlocks });
+
+            await delay(1000)
         }
 
-        if (playerHand.length < 1) {
-            // New cards to all players if the player chooses
-        }
 
-        if(receivedCards.length > 0) {
-            playerHand.push(...receivedCards)
-        } else {
-            let card1, card2;
-
-            if(deck.length > 2) {
-                card1 = deck.pop()!
-                card2 = deck.pop()!
-                playerHand.push(card1)
-                playerHand.push(card2)
-            } else {
-                console.log("Reshuffling discard pile into a new deck")
-                deck = Shuffle(discardPile)
-                discardPile = []
-
-                card1 = deck.pop()!
-                card2 = deck.pop()!
-                playerHand.push(card1)
-                playerHand.push(card2)
-            }
-
-            cardsMoved.push(card1, card2)
-
-        }
-
-        playerHand.sort((a, b) => a.name > b.name ? 1 : -1)
-
-        cardsMoved.push( ...receivedCards)
-
-        return { deck, discardPile, cardsMoved, gameBoard, playerHand, playerFlocks }
+        //return { deck, discardPile, gameBoard, playerHand, playerFlocks }
 
     } else {
-        throw "Card placement error: Used cards not found in player hand."
+        throw Error("Card placement error: Used cards not found in player hand.")
     }
 }

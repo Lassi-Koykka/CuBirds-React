@@ -40,7 +40,7 @@ const PlayerHand = () => {
                 zIndex -= 1;
                 return (
                     <Grid item key={card.uid} className={classes.RowCard} style={{zIndex: z, margin: `0 -${gameState.playerHand.length* 1.5}px`,}}>
-                        <GameCard direction="up" newCard={gameState.cardsMoved.some((movedCard) => movedCard.uid === card.uid)} CardData={card} draggable/>
+                        <GameCard direction="up" CardData={card} draggable/>
                     </Grid>
                 )
             })}

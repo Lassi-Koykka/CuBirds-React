@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { Grid } from "@material-ui/core"
 import DropZone from "./DropZone";
 import { GameStateContext } from "../GameStateContext"
@@ -7,7 +7,7 @@ import GameCard from "./GameCard";
 
 const GameBoard = () => {
 
-    const { gameState, setGameState } = useContext(GameStateContext)
+    const { gameState } = useContext(GameStateContext)
     let rowIndex = 0;
 
     console.log(gameState);
@@ -24,7 +24,7 @@ const GameBoard = () => {
                             <Grid item><DropZone row={currRow} side="left" /></Grid>
                             {row.map(card =>
                                 <Grid key={card.uid} item>
-                                    <GameCard newCard={gameState.cardsMoved.some((movedCard) => movedCard.uid === card.uid)} CardData={card} />
+                                    <GameCard CardData={card} direction="up" gonnaMove={gameState.cardsMoving.some((c) => c.uid === card.uid)} />
                                 </Grid>
                             )}
                             <Grid item><DropZone row={currRow} side="right" /></Grid>

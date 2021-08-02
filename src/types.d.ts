@@ -10,9 +10,9 @@ export type IGameBoard = Array<Array<ICard>>;
 
 export interface IGameState  {
     deck: ICard[],
-    cardsMoved: ICard[],
     discardPile: ICard[],
     playerHand: ICard[],
     playerFlocks: ICard[],
+    cardsMoving: ICard[],
     gameBoard: IGameBoard,
 }

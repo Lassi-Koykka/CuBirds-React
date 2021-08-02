@@ -5,10 +5,10 @@ import { ICard, IGameBoard, IGameState } from "./types"
 const ctxDefaultValue = {
     gameState: {
         deck: [] as ICard[],
-        cardsMoved: [] as ICard[],
         discardPile: [] as ICard[],
         playerHand: [] as ICard[],
         playerFlocks: [] as ICard[],
+        cardsMoving: [] as ICard[],
         gameBoard: [[],[],[],[]] as IGameBoard,
     },
     setGameState: (value: IGameState) => {}

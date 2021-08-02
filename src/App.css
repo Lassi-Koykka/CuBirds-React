@@ -3,7 +3,7 @@ html {
 }
 
 .App {
-
+  overflow: hidden;
   text-align: center;
   color: white;
   min-height: 100vh;
