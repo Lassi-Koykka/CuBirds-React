@@ -1,10 +1,12 @@
-import { makeStyles, Fade } from "@material-ui/core";
+import { makeStyles, Slide } from "@material-ui/core";
 import React from "react";
-import { IBirdCard } from "../types";
+import { ICard } from "../types";
 
 interface GameCardProps {
-    CardData: IBirdCard
-    draggable?: boolean
+    CardData: ICard,
+    draggable?: boolean,
+    newCard?: boolean,
+    direction?: "up" | "down" | "left" | "right" | undefined 
 }
 
 const useStyles = makeStyles({
@@ -28,12 +30,11 @@ const GameCard = (props: GameCardProps) => {
         console.log(e.dataTransfer)
     }
 
-
     return (
-        <Fade in={true} mountOnEnter unmountOnExit>
+        <Slide in={true} direction={props.direction} timeout={props.newCard ? 500 : undefined} mountOnEnter unmountOnExit>
             <div className={classes.GameCard} style={{backgroundImage: 'url(' + props.CardData.imageFile + ')'}} draggable={props.draggable} onDragStart={handleDragStart}>
             </div>
-        </Fade>
+        </Slide>
     )
 }
 

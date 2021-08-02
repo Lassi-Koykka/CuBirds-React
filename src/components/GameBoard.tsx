@@ -24,7 +24,7 @@ const GameBoard = () => {
                             <Grid item><DropZone row={currRow} side="left" /></Grid>
                             {row.map(card =>
                                 <Grid key={card.uid} item>
-                                    <GameCard CardData={card} />
+                                    <GameCard newCard={gameState.cardsMoved.some((movedCard) => movedCard.uid === card.uid)} CardData={card} />
                                 </Grid>
                             )}
                             <Grid item><DropZone row={currRow} side="right" /></Grid>

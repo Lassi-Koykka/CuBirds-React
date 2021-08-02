@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import {makeStyles} from "@material-ui/core"
 import { GameStateContext } from "../GameStateContext";
 import { PlaceCards } from "../util";
-import { IBirdCard } from "../types";
+import { ICard } from "../types";
 
 
 interface DropZoneProps {
@@ -41,7 +41,7 @@ const DropZone = (props: DropZoneProps) => {
         if (e.dataTransfer.dropEffect !== "none") {
             const data = e.dataTransfer.getData("text/json");
             console.log("DATA: \n" + data);
-            let card: IBirdCard = JSON.parse(data)
+            let card: ICard = JSON.parse(data)
             // console.log(data);
             setGameState(PlaceCards(gameState, card, props.row, props.side))
         }

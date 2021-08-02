@@ -1,13 +1,14 @@
 import { createContext, useState, ReactNode } from "react";
-import { IBirdCard, IGameBoard, IGameState } from "./types"
+import { ICard, IGameBoard, IGameState } from "./types"
 
 
 const ctxDefaultValue = {
     gameState: {
-        deck: [] as IBirdCard[],
-        discardPile: [] as IBirdCard[],
-        playerHand: [] as IBirdCard[],
-        playerFlocks: [] as IBirdCard[],
+        deck: [] as ICard[],
+        cardsMoved: [] as ICard[],
+        discardPile: [] as ICard[],
+        playerHand: [] as ICard[],
+        playerFlocks: [] as ICard[],
         gameBoard: [[],[],[],[]] as IGameBoard,
     },
     setGameState: (value: IGameState) => {}

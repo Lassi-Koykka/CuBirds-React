@@ -1,4 +1,4 @@
-export interface IBirdCard {
+export interface ICard {
     uid: string,
     name: string,
     smallFlock: number,
@@ -6,12 +6,13 @@ export interface IBirdCard {
     imageFile: string,
   }
 
-export type IGameBoard = Array<Array<IGameCard>>;
+export type IGameBoard = Array<Array<ICard>>;
 
 export interface IGameState  {
-    deck: IBirdCard[],
-    discardPile: IBirdCard[],
-    playerHand: IBirdCard[],
-    playerFlocks: IBirdCard[],
+    deck: ICard[],
+    cardsMoved: ICard[],
+    discardPile: ICard[],
+    playerHand: ICard[],
+    playerFlocks: ICard[],
     gameBoard: IGameBoard,
 }
