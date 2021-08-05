@@ -13,8 +13,8 @@ interface DropZoneProps {
 
 const useStyles = makeStyles({
     DropZone: {
-        height: 220,
-        width: 160,
+        height: 173,
+        width: 125,
         borderRadius: "15px",
         border: "white 1px dashed",
         display: "grid",

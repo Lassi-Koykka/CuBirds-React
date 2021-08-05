@@ -10,6 +10,7 @@ const ctxDefaultValue = {
         playerFlocks: [] as ICard[],
         cardsMoving: [] as ICard[],
         gameBoard: [[],[],[],[]] as IGameBoard,
+        statusText: ""
     },
     setGameState: (value: IGameState) => {}
 }

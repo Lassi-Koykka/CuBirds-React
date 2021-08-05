@@ -14,8 +14,8 @@ const useStyles = makeStyles({
     GameCard: {
         animationName: "appear",
         animationDuration: "500ms",
-        height: 210,
-        width: 150,
+        height: 168,
+        width: 120,
         borderRadius: 15,
         display: "grid",
         backgroundSize: "contain",

@@ -15,4 +15,5 @@ export interface IGameState  {
     playerFlocks: ICard[],
     cardsMoving: ICard[],
     gameBoard: IGameBoard,
+    statusText: string
 }
