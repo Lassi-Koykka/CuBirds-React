@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import {makeStyles} from "@material-ui/core"
 import { GameStateContext } from "../GameStateContext";
-import { PlaceCards } from "../util";
 import { ICard } from "../types";
 
 
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
 
 const DropZone = (props: DropZoneProps) => {
 
-    const { gameState, setGameState } = useContext(GameStateContext);
+    const { state, dispatch } = useContext(GameStateContext);
 
     const [card, setCard] = useState(props.cardData);
     const [dragging, setDragging] = useState(false);

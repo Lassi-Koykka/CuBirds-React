@@ -4,12 +4,15 @@ import { GameStateContext } from "../GameStateContext";
 
 const GameStatusBar = () => {
 
-    const { gameState } = useContext(GameStateContext)
+    const { state } = useContext(GameStateContext)
 
     return (
         <div style={{ position: "fixed", top: 20, left: 20 }}>
             <Typography variant="h5" >
-                {gameState.statusText}
+                {state.players.find(p => p.id === state.activePlayerID)?.name} TURN
+            </Typography>
+            <Typography variant="h6" >
+                {state.statusText}
             </Typography>
         </div>
     );

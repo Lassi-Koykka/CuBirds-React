@@ -7,16 +7,16 @@ import GameCard from "./GameCard";
 
 const GameBoard = () => {
 
-    const { gameState } = useContext(GameStateContext)
+    const { state } = useContext(GameStateContext)
     let rowIndex = 0;
 
-    console.log(gameState);
+    console.log(state);
 
     return (
         <Grid container direction="column" wrap="nowrap" spacing={1} style={{ width: "100vw", height: "100vh" }}>
 
             {
-                gameState.gameBoard.map(row => {
+                state.gameBoard.map(row => {
                     let currRow = rowIndex;
                     rowIndex += 1;
                     return (
@@ -24,7 +24,7 @@ const GameBoard = () => {
                             <Grid item><DropZone row={currRow} side="left" /></Grid>
                             {row.map(card =>
                                 <Grid key={card.uid} item>
-                                    <GameCard CardData={card} direction="up" gonnaMove={gameState.cardsMoving.some((c) => c.uid === card.uid)} />
+                                    <GameCard CardData={card} direction="up" gonnaMove={state.cardsToPickup.some((c) => c.uid === card.uid)} />
                                 </Grid>
                             )}
                             <Grid item><DropZone row={currRow} side="right" /></Grid>

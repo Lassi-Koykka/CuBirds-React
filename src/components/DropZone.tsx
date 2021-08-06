@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import {makeStyles} from "@material-ui/core"
 import { GameStateContext } from "../GameStateContext";
-import { PlaceCards } from "../util";
 import { ICard } from "../types";
+import { ActionType } from "../Actions";
+import { delay } from "../util";
 
 
 interface DropZoneProps {
@@ -29,20 +30,33 @@ const useStyles = makeStyles({
 
 const DropZone = (props: DropZoneProps) => {
 
-    const { gameState, setGameState } = useContext(GameStateContext);
+    const { state, dispatch } = useContext(GameStateContext);
 
     const [dropHover, setDropHover] = useState(false);
     const classes = useStyles();
+
+    const HandlePlayerMove = async (usedCard: ICard, row: number, side: "left" | "right") => {
+        dispatch({type: ActionType.PlaceCards, payload: {playerID: 0, usedCard, row, side}});
+        await delay(1000);
+        dispatch({type: ActionType.PickUpCards, payload: {playerID: 0, row, cards: state.cardsToPickup}})
+        await delay(1000)
+        if(state.gameBoard[row].every(c => c.name === state.gameBoard[row][0].name)) {
+            while(state.gameBoard[row].every(c => c.name === state.gameBoard[row][0].name)) {
+                dispatch({type: ActionType.FillRowByOne, payload: {row, side}})
+                await delay(1000)
+            }
+        }
+    }
 
     const handleOnDrop = (e: React.DragEvent) => {
         e.preventDefault();
         
         setDropHover(false)
-        if (e.dataTransfer.dropEffect !== "none") {
+        if (e.dataTransfer.dropEffect !== "none" && state.activePlayerID === 0) {
             const data = e.dataTransfer.getData("text/json");
             console.log("DATA: \n" + data);
             let card: ICard = JSON.parse(data)
-            PlaceCards(gameState, setGameState, card, props.row, props.side)
+            HandlePlayerMove(card, props.row, props.side)
         }
     }
 
@@ -52,7 +66,8 @@ const DropZone = (props: DropZoneProps) => {
     }
 
     return (
-        <div className={classes.DropZone} style={{background: (dropHover ? "#4CAF50" : "transparent")}} 
+        <div className={classes.DropZone} 
+        style={{background: (dropHover ? (state.activePlayerID === 0 ? "#4CAF50" : "#F44336" ) : "transparent")}} 
         onDragLeave={() => setDropHover(false)}
         onDragOver={handleDragOver}
         onDrop={handleOnDrop} >
