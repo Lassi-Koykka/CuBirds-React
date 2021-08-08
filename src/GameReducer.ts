@@ -24,14 +24,14 @@ export const GameReducer = (state: IGameState, action: GameActions): IGameState 
         case ActionType.FillRowByOne:
             return FillRowByOne(action.payload.row, action.payload.side, state);
         case ActionType.SetMovingCards:
-            return {...state, cardsToPickup: action.payload.cards}
+            return { ...state, cardsToPickup: action.payload.cards }
         case ActionType.SetStatusText:
-            return {...state, statusText: action.payload}
-        case ActionType.NextPhase: 
-            return {...state, phase: GetNextPhase(state.phase)}
+            return { ...state, statusText: action.payload }
+        case ActionType.NextPhase:
+            return { ...state, phase: GetNextPhase(state.phase) }
         case ActionType.NextTurn:
             // current (player id + 1) % amount of players = next player id
-            return {...state, activePlayerID: (state.activePlayerID + 1) % state.players.length}
+            return { ...state, activePlayerID: (state.activePlayerID + 1) % state.players.length }
         default:
             return state;
 
@@ -110,19 +110,20 @@ export const SetupGame = (startDeck: ICard[], AICount: number = 3): IGameState =
 
     //TODO randomize starting player
 
-    return { activePlayerID: 0, 
-        deck, 
-        gameBoard, 
-        cardsToPickup: [], 
-        discardPile, 
-        players, 
+    return {
+        activePlayerID: 0,
+        deck,
+        gameBoard,
+        cardsToPickup: [],
+        discardPile,
+        players,
         statusText: "",
         phase: "Put"
     }
 }
 
 export const GetNextPhase = (phase: "Put" | "Get" | "Fill" | "Flock"): "Put" | "Get" | "Fill" | "Flock" => {
-    switch(phase){
+    switch (phase) {
         case "Put":
             return "Get"
         case "Get":
@@ -171,18 +172,19 @@ export const PickUpCards = (playerID: number, row: number, state: IGameState): I
     let { players, gameBoard, deck, discardPile } = state
     let { hand } = players.find(p => p.id === playerID)!;
 
-        gameBoard[row] = gameBoard[row]
-            .filter(rowCard =>
-                state.cardsToPickup.every(
-                    receivedCard => receivedCard.uid !== rowCard.uid
-                ))
+    gameBoard[row] = gameBoard[row]
+        .filter(rowCard =>
+            state.cardsToPickup.every(
+                receivedCard => receivedCard.uid !== rowCard.uid
+            ))
 
-        hand.push(...state.cardsToPickup);
-        
-        const cardCounts = CountSpecies(state.cardsToPickup)
-        
-        const statusText = "Received: " + Object.keys(cardCounts).map(key => cardCounts[key] + "x " + key + " ");
+    hand.push(...state.cardsToPickup);
 
+    hand.sort((a, b) => a.name > b.name ? 1 : -1);
+
+    const cardCounts = CountSpecies(state.cardsToPickup)
+
+    const statusText = "Received: " + Object.keys(cardCounts).map(key => cardCounts[key] + "x " + key + " ");
 
     return {
         ...state,
@@ -221,28 +223,28 @@ const DrawFromDeck = (playerID: number, state: IGameState): IGameState => {
 
     let statusText = "Drew 2 cards from the deck";
 
-    return { 
+    return {
         ...state,
         phase: "Fill",
-        deck, 
-        discardPile, 
-        statusText, 
-        players: players.map(p => p.id === playerID ? { ...p, hand: hand } : p) 
+        deck,
+        discardPile,
+        statusText,
+        players: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
     }
 }
 
 const FillRowByOne = (row: number, side: "left" | "right", state: IGameState): IGameState => {
-    let {deck, gameBoard, discardPile} = state;
+    let { deck, gameBoard, discardPile } = state;
     if (deck.length < 1) {
         deck = Shuffle(discardPile)
         discardPile = []
     }
     const newCard = deck.pop()!;
     side === "left" ? gameBoard[row].push(newCard) : gameBoard[row].unshift(newCard)
-    
+
     const statusText = "Added a new card to row " + (row + 1);
 
-    return {...state, statusText, deck, gameBoard};
+    return { ...state, statusText, deck, gameBoard };
 }
 
 const getCardsFromRow = (side: "left" | "right", cardName: string, row: ICard[]) => {
