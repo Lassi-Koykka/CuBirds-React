@@ -23,5 +23,6 @@ export interface IGameState {
   gameBoard: IGameBoard,
   players: IPlayer[],
   activePlayerID: number,
+  phase: "Put" | "Get" | "Fill" | "Flock";
 }
 

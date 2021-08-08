@@ -2,7 +2,7 @@ import './App.css';
 import { GameStateProvider } from './GameStateContext';
 
 import GameBoard from './components/GameBoard';
-import { SetupGame } from "./GameStateContext"
+import { SetupGame } from "./GameReducer"
 import cards from "./cards.json";
 import PlayerHand from './components/PlayerHand';
 import GameStatusBar from './components/GameStatusBar';

@@ -8,10 +8,13 @@ export enum ActionType {
     SetMovingCards,
     PlaceCards,
     PickUpCards,
+    DrawFromDeck,
     FillRowByOne,
     AddFlock,
+    NextPhase,
     NextTurn,
     StartNewRound,
+    SetStatusText
 }
 
 export interface AddPlayer {
@@ -41,9 +44,14 @@ export interface PlaceCards {
     payload: {playerID: number, usedCard: ICard, side: "left" | "right", row: number}
 }
 
+export interface DrawFromDeck {
+    type: ActionType.DrawFromDeck,
+    payload: {playerID: number}
+}
+
 export interface PickUpCards {
     type: ActionType.PickUpCards,
-    payload: {playerID: number, row: number, cards: ICard[]}
+    payload: {playerID: number, row: number}
 }
 
 export interface FillRowByOne {
@@ -56,6 +64,10 @@ export interface AddFlock {
     payload: {playerID: number, birdName: string, size: "small" | "large"}
 }
 
+export interface NextPhase {
+    type: ActionType.NextPhase,
+}
+
 export interface NextTurn {
     type: ActionType.NextTurn
 }
@@ -65,6 +77,10 @@ export interface StartNewRound {
     payload: { currPlayerId: number }
 }
 
+export interface SetStatusText {
+    type: ActionType.SetStatusText,
+    payload: string
+}
 
 export type GameActions = 
 AddPlayer |
@@ -74,7 +90,10 @@ ShuffleDeckFromDiscard |
 SetMovingCards |
 PlaceCards |
 PickUpCards |
+DrawFromDeck |
 FillRowByOne |
 AddFlock |
+NextPhase |
 NextTurn | 
-StartNewRound 
+StartNewRound |
+SetStatusText

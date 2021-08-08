@@ -7,7 +7,7 @@ const GameStatusBar = () => {
     const { state } = useContext(GameStateContext)
 
     return (
-        <div style={{ position: "fixed", top: 20, left: 20 }}>
+        <div style={{ position: "fixed", top: 20, left: 20, textAlign: "left" }}>
             <Typography variant="h5" >
                 {state.players.find(p => p.id === state.activePlayerID)?.name} TURN
             </Typography>

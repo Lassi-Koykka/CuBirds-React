@@ -10,8 +10,6 @@ const GameBoard = () => {
     const { state } = useContext(GameStateContext)
     let rowIndex = 0;
 
-    console.log(state);
-
     return (
         <Grid container direction="column" wrap="nowrap" spacing={1} style={{ width: "100vw", height: "100vh" }}>
 
