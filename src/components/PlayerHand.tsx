@@ -30,7 +30,7 @@ const PlayerHand = () => {
 
     let zIndex = 1000;
 
-    const playerHand = state.players[0].hand
+    const playerHand = state.actors[0].hand
 
     return (
         <Grid container className={classes.PlayerHand} direction="row" justify="center" wrap="nowrap">
@@ -39,7 +39,7 @@ const PlayerHand = () => {
                 zIndex -= 1;
                 return (
                     <Grid item key={card.uid} className={classes.RowCard} style={{zIndex: z, margin: `0 -${playerHand.length* 1.5}px`,}}>
-                        <GameCard direction="up" CardData={card} draggable={state.activePlayerID === 0 && state.phase === "Put"} />
+                        <GameCard direction="up" CardData={card} draggable={state.currActorID === 0 && state.phase === "Put"} />
                     </Grid>
                 )
             })}

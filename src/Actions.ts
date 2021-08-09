@@ -1,4 +1,4 @@
-import { ICard, IPlayer } from "./types";
+import { ICard, IActor } from "./types";
 
 export enum ActionType {
     AddPlayer,
@@ -19,7 +19,7 @@ export enum ActionType {
 
 export interface AddPlayer {
     type: ActionType.AddPlayer,
-    payload: IPlayer
+    payload: IActor
 }
 
 export interface ShuffleDeck {

@@ -9,7 +9,7 @@ const GameStatusBar = () => {
     return (
         <div style={{ position: "fixed", top: 20, left: 20, textAlign: "left" }}>
             <Typography variant="h5" >
-                {state.players.find(p => p.id === state.activePlayerID)?.name} TURN
+                {state.actors.find(p => p.id === state.currActorID)?.name} TURN
             </Typography>
             <Typography variant="h6" >
                 {state.statusText}

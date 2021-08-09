@@ -1,6 +1,6 @@
 import { ActionType, GameActions } from "./Actions";
 import cards from "./cards.json"
-import { ICard, IGameBoard, IGameState, IPlayer } from "./types"
+import { ICard, IGameBoard, IGameState, IActor } from "./types"
 import { CountSpecies } from "./util";
 
 
@@ -8,7 +8,7 @@ import { CountSpecies } from "./util";
 export const GameReducer = (state: IGameState, action: GameActions): IGameState => {
     switch (action.type) {
         case ActionType.AddPlayer:
-            return { ...state, players: [action.payload, ...state.players] }
+            return { ...state, actors: [action.payload, ...state.actors] }
         case ActionType.SetupGame:
             return SetupGame(cards)
         case ActionType.ShuffleDeck:
@@ -31,7 +31,7 @@ export const GameReducer = (state: IGameState, action: GameActions): IGameState 
             return { ...state, phase: GetNextPhase(state.phase) }
         case ActionType.NextTurn:
             // current (player id + 1) % amount of players = next player id
-            return { ...state, activePlayerID: (state.activePlayerID + 1) % state.players.length }
+            return { ...state, currActorID: (state.currActorID + 1) % state.actors.length }
         default:
             return state;
 
@@ -55,10 +55,11 @@ export const SetupGame = (startDeck: ICard[], AICount: number = 3): IGameState =
     const deck = Shuffle(startDeck);
     const gameBoard: IGameBoard = [[], [], [], []]
     const discardPile: ICard[] = [];
-    const players: IPlayer[] = [
+    const players: IActor[] = [
         {
             id: 0,
             name: "PLAYER",
+            isClient: true,
             hand: [],
             flocks: []
         },
@@ -111,12 +112,12 @@ export const SetupGame = (startDeck: ICard[], AICount: number = 3): IGameState =
     //TODO randomize starting player
 
     return {
-        activePlayerID: 0,
+        currActorID: 0,
         deck,
         gameBoard,
         cardsToPickup: [],
         discardPile,
-        players,
+        actors: players,
         statusText: "",
         phase: "Put"
     }
@@ -136,7 +137,7 @@ export const GetNextPhase = (phase: "Put" | "Get" | "Fill" | "Flock"): "Put" | "
 }
 
 export const PlaceCards = (playerID: number, usedCard: ICard, row: number, side: "left" | "right", gameState: IGameState): IGameState => {
-    let { players, gameBoard } = gameState
+    let { actors: players, gameBoard } = gameState
     let { hand } = players.find(p => p.id === playerID)!;
 
     //  PLACE CARDS FROM HAND TO THE TABLE
@@ -163,13 +164,13 @@ export const PlaceCards = (playerID: number, usedCard: ICard, row: number, side:
         phase: "Get",
         gameBoard,
         cardsToPickup: receivedCards,
-        players: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
     }
 }
 
 export const PickUpCards = (playerID: number, row: number, state: IGameState): IGameState => {
 
-    let { players, gameBoard, deck, discardPile } = state
+    let { actors: players, gameBoard, deck, discardPile } = state
     let { hand } = players.find(p => p.id === playerID)!;
 
     gameBoard[row] = gameBoard[row]
@@ -194,12 +195,12 @@ export const PickUpCards = (playerID: number, row: number, state: IGameState): I
         deck,
         discardPile,
         gameBoard,
-        players: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
     }
 }
 
 const DrawFromDeck = (playerID: number, state: IGameState): IGameState => {
-    let { deck, discardPile, players } = state;
+    let { deck, discardPile, actors: players } = state;
     let { hand } = players.find(p => p.id === playerID)!;
 
     let card1, card2;
@@ -229,7 +230,7 @@ const DrawFromDeck = (playerID: number, state: IGameState): IGameState => {
         deck,
         discardPile,
         statusText,
-        players: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
     }
 }
 

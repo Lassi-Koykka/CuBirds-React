@@ -8,8 +8,9 @@ export interface ICard {
 
 export type IGameBoard = Array<Array<ICard>>;
 
-export interface IPlayer {
+export interface IActor {
   id: number,
+  isClient?: boolean,
   name: string,
   hand: ICard[],
   flocks: ICard[],
@@ -21,8 +22,8 @@ export interface IGameState {
   discardPile: ICard[],
   cardsToPickup: ICard[],
   gameBoard: IGameBoard,
-  players: IPlayer[],
-  activePlayerID: number,
+  actors: IActor[],
+  currActorID: number,
   phase: "Put" | "Get" | "Fill" | "Flock";
 }
 

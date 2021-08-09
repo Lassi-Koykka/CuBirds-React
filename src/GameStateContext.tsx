@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useReducer } from "react";
 import { GameActions } from "./Actions";
 import { GameReducer } from "./GameReducer";
-import { ICard, IGameBoard, IGameState, IPlayer } from "./types"
+import { ICard, IGameBoard, IGameState, IActor } from "./types"
 
 const ctxDefaultValue: {state: IGameState, dispatch: () => undefined} = {
     state: {
@@ -9,8 +9,8 @@ const ctxDefaultValue: {state: IGameState, dispatch: () => undefined} = {
         discardPile: [] as ICard[],
         cardsToPickup: [] as ICard[],
         gameBoard: [[], [], [], []] as IGameBoard,
-        players: [] as IPlayer[],
-        activePlayerID: 0,
+        actors: [] as IActor[],
+        currActorID: 0,
         statusText: "",
         phase: "Put"
     },
