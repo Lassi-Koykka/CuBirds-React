@@ -37,7 +37,7 @@ const GameStatusBar = () => {
                     return (
                         <Grid item xs={3}>
                             <Typography variant="subtitle1" align="center">
-                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}{playerFlocks[speciesName] > 1 ? ": X" + playerFlocks[speciesName] : ""}
+                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}{playerFlocks[speciesName] > 1 ? " x" + playerFlocks[speciesName] : ""}
                             </Typography>
                             <div style={{width: "min-content", margin: "auto"}}>
                                 <GameCard CardData={cardData} flockCard direction="up" />

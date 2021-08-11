@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme: Theme) =>
             userSelect: "none"
         },
         [theme.breakpoints.down("md")]: {
-            width: 90,
-            height: 122
+            width: 85,
+            height: 117
         },
         [theme.breakpoints.down("xs")]: {
-            width: 70,
-            height: 94
+            width: 60,
+            height: 84
         }
     }
 
