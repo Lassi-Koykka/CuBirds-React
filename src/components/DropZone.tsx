@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { makeStyles } from "@material-ui/core"
+import { createStyles, makeStyles, Theme } from "@material-ui/core"
 import { GameStateContext } from "../GameStateContext";
 import { ICard } from "../types";
 import { ActionType } from "../Actions";
@@ -12,7 +12,8 @@ interface DropZoneProps {
 }
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
     DropZone: {
         height: 173,
         width: 125,
@@ -23,10 +24,18 @@ const useStyles = makeStyles({
         transition: "0.3s",
         "& *": {
             userSelect: "none"
+        },
+        [theme.breakpoints.down("md")]: {
+            width: 90,
+            height: 122
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: 70,
+            height: 94
         }
     }
 
-});
+}));
 
 const DropZone = (props: DropZoneProps) => {
 

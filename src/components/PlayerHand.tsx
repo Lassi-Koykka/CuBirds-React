@@ -5,7 +5,7 @@ import GameCard from "./GameCard";
 
 const useStyles = makeStyles({
     PlayerHand: { 
-        position: "fixed", 
+        position: "absolute", 
         bottom: 0, 
         left: 0, 
         width: "100%", 

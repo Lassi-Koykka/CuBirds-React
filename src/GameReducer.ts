@@ -29,9 +29,11 @@ export const GameReducer = (state: IGameState, action: GameActions): IGameState 
             return { ...state, statusText: action.payload }
         case ActionType.NextPhase:
             return { ...state, phase: GetNextPhase(state.phase) }
+        case ActionType.AddFlock:
+            return addFlock(action.payload.playerID, action.payload.birdName, action.payload.size, state);
         case ActionType.NextTurn:
             // current (player id + 1) % amount of players = next player id
-            return { ...state, currActorID: (state.currActorID + 1) % state.actors.length }
+            return { ...state, phase: GetNextPhase(state.phase), currActorID: (state.currActorID + 1) % state.actors.length }
         default:
             return state;
 
@@ -84,6 +86,7 @@ export const SetupGame = (startDeck: ICard[], AICount: number = 3): IGameState =
     ];
 
     // Setup gameboard
+
     gameBoard.forEach(row => {
         const usedSpecies: string[] = [];
         while (row.length < 3) {
@@ -256,4 +259,40 @@ const getCardsFromRow = (side: "left" | "right", cardName: string, row: ICard[])
         : receivedCards = row.reverse().splice(0, row.findIndex(card => card.name === cardName)).reverse()
 
     return receivedCards;
+}
+
+const addFlock = (playerID: number, birdName: string, size: "large" | "small", state: IGameState): IGameState => {
+    
+    // TODO add flock
+    let { discardPile, actors } = state;
+    let player = actors[0];
+
+    let newFlockCards: ICard[] = [];
+    let newHand: ICard[] = [];
+
+    player.hand.forEach((c) => {
+        if(c.name === birdName) {
+            if (newFlockCards.length < 1 ||( size === "large" && newFlockCards.length < 2)) {
+                newFlockCards.push(c);
+            } else {
+                discardPile.push(c);
+            }
+        } else {
+            newHand.push(c)
+        }
+    })
+
+
+    player.flocks.push(...newFlockCards);
+    player.hand = newHand;
+
+    player.hand.sort((a, b) => a.name > b.name ? 1 : -1);
+    
+
+    return {
+        ...state,
+        phase: "Put",
+        discardPile,
+        actors: actors.map(p => p.id === playerID ? player : p),
+    };
 }
