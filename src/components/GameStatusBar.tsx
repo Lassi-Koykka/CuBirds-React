@@ -31,17 +31,19 @@ const GameStatusBar = () => {
             <Typography variant="h6" >
                 YOUR FLOCKS:
             </Typography>
-            <Grid container spacing={1}>
+            <Grid container spacing={1} style={{ width: 320 }} direction="row-reverse" >
                 {Object.keys(playerFlocks).map((speciesName) => {
                     const cardData = state.actors[0].flocks.find(c => c.name === speciesName)!
                     return (
-                    <Grid item xs={6}>
-                    <Typography variant="caption" >
-                       {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}{playerFlocks[speciesName] > 1 ? ": X" + playerFlocks[speciesName]: ""}
-                    </Typography>
-                    <GameCard CardData={cardData} flockCard direction="up" />
-                    </Grid>
-                )
+                        <Grid item xs={3}>
+                            <Typography variant="subtitle1" align="center">
+                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}{playerFlocks[speciesName] > 1 ? ": X" + playerFlocks[speciesName] : ""}
+                            </Typography>
+                            <div style={{width: "min-content", margin: "auto"}}>
+                                <GameCard CardData={cardData} flockCard direction="up" />
+                            </div>
+                        </Grid>
+                    )
                 })}
             </Grid>
         </div>
