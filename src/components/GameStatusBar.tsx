@@ -37,10 +37,13 @@ const GameStatusBar = () => {
                     return (
                         <Grid item xs={3}>
                             <Typography variant="subtitle1" align="center">
-                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}{playerFlocks[speciesName] > 1 ? " x" + playerFlocks[speciesName] : ""}
+                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}
                             </Typography>
-                            <div style={{width: "min-content", margin: "auto"}}>
-                                <GameCard CardData={cardData} flockCard direction="up" />
+                            <div style={{position: "relative", width: "min-content", margin: "auto"}}>
+                                <div style={{filter: "brightness(50%)"}}>
+                                    <GameCard CardData={cardData} flockCard direction="up" />
+                                </div>
+                                <Typography variant="h4" style={{color: "white", position: "absolute", top:"25%", left: "30%"}}>{playerFlocks[speciesName]}</Typography>
                             </div>
                         </Grid>
                     )

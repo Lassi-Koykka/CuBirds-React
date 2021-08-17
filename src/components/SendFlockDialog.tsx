@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Typography } from "@material-ui/core";
+import { Button, Dialog, DialogContent, DialogTitle, Grid, Typography } from "@material-ui/core";
 import { useContext, useState } from "react";
 import { ActionType } from "../Actions";
 import { GameStateContext } from "../GameStateContext";
