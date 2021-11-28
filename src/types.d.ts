@@ -27,3 +27,10 @@ export interface IGameState {
   phase: "Put" | "Get" | "Fill" | "Flock";
 }
 
+export interface IMove {
+  playerID: number;
+  usedCard: ICard;
+  side: "left" | "right";
+  row: number;
+}
+

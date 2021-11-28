@@ -1,15 +1,17 @@
-import { IGameState, ICard } from "./types";
+import { IGameState, IMove } from "./types";
 
 export const AIPutMove = (gameState: IGameState) => {
     const {actors, gameBoard  } = gameState
     const ai = actors.find(a => a.id === gameState.currActorID)!
 
-    interface IMove {
-        card: ICard,
-        row: number,
-        side: "left" | "right",
+    const randomMove: IMove = {
+        playerID: ai.id,
+        usedCard: ai.hand[Math.floor(Math.random() * ai.hand.length)],
+        row: Math.floor(Math.random() * gameBoard.length),
+        side: Math.random() < 0.5 ? "left" : "right"
     }
     
+    return randomMove
 
     // Two ways to win: 7 different species or 3 of two different species
     

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const DropZone = (props: DropZoneProps) => {
 
     const { state, dispatch } = useContext(GameStateContext);
-    const { setMoveData} = useContext(MoveDataContext);
+    const { setMoveData } = useContext(MoveDataContext);
     
     
     const [dropHover, setDropHover] = useState(false);

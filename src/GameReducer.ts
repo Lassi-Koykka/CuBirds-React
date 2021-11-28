@@ -30,7 +30,7 @@ export const GameReducer = (state: IGameState, action: GameActions): IGameState 
         case ActionType.NextPhase:
             return { ...state, phase: GetNextPhase(state.phase) }
         case ActionType.AddFlock:
-            return addFlock(action.payload.playerID, action.payload.birdName, action.payload.size, state);
+            return AddFlock(action.payload.playerID, action.payload.birdName, action.payload.size, state);
         case ActionType.NextTurn:
             // current (player id + 1) % amount of players = next player id
             return { ...state, phase: GetNextPhase(state.phase), currActorID: (state.currActorID + 1) % state.actors.length }
@@ -140,15 +140,17 @@ export const GetNextPhase = (phase: "Put" | "Get" | "Fill" | "Flock"): "Put" | "
 }
 
 export const PlaceCards = (playerID: number, usedCard: ICard, row: number, side: "left" | "right", gameState: IGameState): IGameState => {
-    let { actors: players, gameBoard } = gameState
-    let { hand } = players.find(p => p.id === playerID)!;
+    let { actors, gameBoard } = gameState
+    let { hand } = actors.find(a => a.id === playerID)!;
 
     //  PLACE CARDS FROM HAND TO THE TABLE
-
     const usedCards = hand.filter(card => card.name === usedCard.name)
-    const currRow = gameBoard[row]
+    let updatedBoard = [...gameBoard];
+    let currRow = [...updatedBoard[row]]
 
-    const receivedCards = getCardsFromRow(side, usedCard.name, [...currRow]);
+    console.log("Placed cards",usedCards.map(c => c.name))
+
+    const receivedCards = GetCardsFromRow(side, usedCard.name, [...currRow]);
     // Add cards to the appropriate side of the row
 
     if (side === "left") {
@@ -157,24 +159,26 @@ export const PlaceCards = (playerID: number, usedCard: ICard, row: number, side:
         currRow.push(...usedCards);
     }
 
-    console.log(currRow.map(c => c.name));
+    console.log("New row", currRow.map(c => c.name));
 
     // Remove card from players hand
     hand = hand.filter(card => !usedCards.includes(card))
 
+    updatedBoard[row] = currRow;
+
     return {
         ...gameState,
         phase: "Get",
-        gameBoard,
+        gameBoard: updatedBoard,
         cardsToPickup: receivedCards,
-        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: actors.map(a => a.id === playerID ? { ...a, hand: hand } : a)
     }
 }
 
 export const PickUpCards = (playerID: number, row: number, state: IGameState): IGameState => {
 
-    let { actors: players, gameBoard, deck, discardPile } = state
-    let { hand } = players.find(p => p.id === playerID)!;
+    let { actors, gameBoard, deck, discardPile } = state
+    let { hand } = actors.find(a => a.id === playerID)!;
 
     gameBoard[row] = gameBoard[row]
         .filter(rowCard =>
@@ -189,6 +193,7 @@ export const PickUpCards = (playerID: number, row: number, state: IGameState): I
     const cardCounts = CountSpecies(state.cardsToPickup)
 
     const statusText = "Received: " + Object.keys(cardCounts).map(key => cardCounts[key] + "x " + key + " ");
+    console.log(statusText)
 
     return {
         ...state,
@@ -198,13 +203,13 @@ export const PickUpCards = (playerID: number, row: number, state: IGameState): I
         deck,
         discardPile,
         gameBoard,
-        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: actors.map(a => a.id === playerID ? { ...a, hand: hand } : a)
     }
 }
 
 const DrawFromDeck = (playerID: number, state: IGameState): IGameState => {
-    let { deck, discardPile, actors: players } = state;
-    let { hand } = players.find(p => p.id === playerID)!;
+    let { deck, discardPile, actors } = state;
+    let { hand } = actors.find(a => a.id === playerID)!;
 
     let card1, card2;
 
@@ -233,7 +238,7 @@ const DrawFromDeck = (playerID: number, state: IGameState): IGameState => {
         deck,
         discardPile,
         statusText,
-        actors: players.map(p => p.id === playerID ? { ...p, hand: hand } : p)
+        actors: actors.map(a => a.id === playerID ? { ...a, hand: hand } : a)
     }
 }
 
@@ -251,7 +256,7 @@ const FillRowByOne = (row: number, side: "left" | "right", state: IGameState): I
     return { ...state, statusText, deck, gameBoard };
 }
 
-const getCardsFromRow = (side: "left" | "right", cardName: string, row: ICard[]) => {
+const GetCardsFromRow = (side: "left" | "right", cardName: string, row: ICard[]) => {
     let receivedCards: ICard[] = [];
 
     side === "left" ?
@@ -261,11 +266,11 @@ const getCardsFromRow = (side: "left" | "right", cardName: string, row: ICard[])
     return receivedCards;
 }
 
-const addFlock = (playerID: number, birdName: string, size: "large" | "small", state: IGameState): IGameState => {
+const AddFlock = (playerID: number, birdName: string, size: "large" | "small", state: IGameState): IGameState => {
     
     // TODO add flock
     let { discardPile, actors } = state;
-    let player = actors[0];
+    let player = actors.find(a => a.id === playerID)!;
 
     let newFlockCards: ICard[] = [];
     let newHand: ICard[] = [];
@@ -294,5 +299,6 @@ const addFlock = (playerID: number, birdName: string, size: "large" | "small", s
         phase: "Put",
         discardPile,
         actors: actors.map(p => p.id === playerID ? player : p),
+        currActorID: (state.currActorID + 1) % state.actors.length
     };
 }
