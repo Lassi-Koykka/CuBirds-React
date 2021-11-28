@@ -298,6 +298,7 @@ const AddFlock = (playerID: number, birdName: string, size: "large" | "small", s
         ...state,
         phase: "Put",
         discardPile,
+        statusText: "Sent home a " + size + " " + birdName + " flock",
         actors: actors.map(p => p.id === playerID ? player : p),
         currActorID: (state.currActorID + 1) % state.actors.length
     };

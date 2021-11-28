@@ -32,14 +32,16 @@ const PlayerHand = () => {
 
     const playerHand = state.actors[0].hand
 
+    const playerCanPlace = (state.currActorID === 0 && state.phase === "Put");
+
     return (
-        <Grid container className={classes.PlayerHand} direction="row" justify="center" wrap="nowrap">
+        <Grid container className={classes.PlayerHand} direction="row" justify="center" wrap="nowrap" style={{filter: !playerCanPlace ? "brightness(50%)": undefined, transition: "0.1s"}}>
             {playerHand.map((card) => {
                 let z = zIndex;
                 zIndex -= 1;
                 return (
                     <Grid item key={card.uid} className={classes.RowCard} style={{zIndex: z, margin: `0 -${playerHand.length* 1.5}px`,}}>
-                        <GameCard direction="up" CardData={card} draggable={state.currActorID === 0 && state.phase === "Put"} />
+                        <GameCard direction="up" CardData={card} draggable={playerCanPlace} />
                     </Grid>
                 )
             })}

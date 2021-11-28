@@ -8,7 +8,7 @@ const GameStatusBar = () => {
 
     const { state } = useContext(GameStateContext)
 
-    const playerFlocks = CountSpecies(state.actors[0].flocks);
+    const playersFlocks = state.actors.map(a => ({ player: a, flocks: CountSpecies(a.flocks) }));
 
     return (<>
         <div style={{ position: "fixed", top: 20, left: 20, textAlign: "left" }}>
@@ -28,28 +28,35 @@ const GameStatusBar = () => {
             </Typography>
         </div>
         <div style={{ position: "fixed", top: "20%", right: 20, textAlign: "right", width: "max-content" }}>
-            <Typography variant="h6" >
-                YOUR FLOCKS:
-            </Typography>
-            <Grid container spacing={1} style={{ width: 320 }} direction="row-reverse" >
-                {Object.keys(playerFlocks).map((speciesName) => {
-                    const cardData = state.actors[0].flocks.find(c => c.name === speciesName)!
-                    return (
-                        <Grid item xs={3}>
-                            <Typography variant="subtitle1" align="center">
-                                {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}
-                            </Typography>
-                            <div style={{position: "relative", width: "min-content", margin: "auto"}}>
-                                <div style={{filter: "brightness(50%)"}}>
-                                    <GameCard CardData={cardData} flockCard direction="up" />
-                                </div>
-                                <Typography variant="h4" style={{color: "white", position: "absolute", top:"25%", left: "30%"}}>{playerFlocks[speciesName]}</Typography>
-                            </div>
+            {
+                playersFlocks.map(({ player, flocks }) =>
+                    <>
+                        <Typography variant="h6" >
+                            {player.name} FLOCKS:
+                        </Typography>
+                        <Grid container spacing={1} style={{ width: 320 }} direction="row-reverse" >
+                            {Object.keys(flocks).map((speciesName) => {
+                                const cardData = player.flocks.find(c => c.name === speciesName)!
+                                return (
+                                    <Grid item xs={3}>
+                                        <Typography variant="subtitle1" align="center">
+                                            {speciesName[0].toLocaleUpperCase() + speciesName.slice(1)}
+                                        </Typography>
+                                        <div style={{ position: "relative", width: "min-content", margin: "auto" }}>
+                                            <div style={{ filter: "brightness(50%)" }}>
+                                                <GameCard CardData={cardData} flockCard direction="up" />
+                                            </div>
+                                            <Typography variant="h4" style={{ color: "white", position: "absolute", top: "25%", left: "30%" }}>{flocks[speciesName]}</Typography>
+                                        </div>
+                                    </Grid>
+                                )
+                            })}
                         </Grid>
-                    )
-                })}
-            </Grid>
+                    </>
+                )
+            }
         </div>
+
     </>
     );
 }
